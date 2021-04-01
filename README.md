@@ -4,6 +4,7 @@ Shellme is a full web terminal server micro service.
 
 It supports full escape sequences. It is written in golang
 
+![Image of Shellme](https://raw.githubusercontent.com/ferama/shellme/master/docs/shellme.gif)
 
 ## How to run
 

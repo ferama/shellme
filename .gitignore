@@ -2,3 +2,5 @@ bin
 __pycache__
 data
 node_modules
+
+.DS_Store
