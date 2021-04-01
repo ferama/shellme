@@ -1,9 +1,5 @@
 #! /bin/bash
 
-cd poshme
-
-python=$(which python3)
-
 flags=""
 # flags="$flags -ptycmd \"sh -c 'cd /tmp; exec zsh'\""
 

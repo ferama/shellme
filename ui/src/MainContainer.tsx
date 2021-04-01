@@ -1,6 +1,6 @@
 import React from 'react'
 import { TerminalView } from './view/TerminalView'
-import { Layout, Menu } from 'antd';
+import { Layout } from 'antd';
 import { ExperimentOutlined, CodeOutlined } from '@ant-design/icons';
 import {
     Switch,
