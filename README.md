@@ -8,7 +8,7 @@ It supports escape sequences so you can run vim too :). It is written in golang
 
 ## How to run
 
-You can build a the binary distribution cloning this repo and running the **build.sh** script.
+You can build a binary executable cloning this repo and running the **build.sh** script.
 You will need:
 
 * go 1.16
@@ -22,4 +22,4 @@ $ docker run -p 8000:8000 ferama/shellme
 
 ## Security Warning
 
-Be warned: launching shellme locally as is will expose on 8000 a full shell with your user priveleges. It is highly recommendend that you put a security authenticated proxy on front of it
+Be warned: launching shellme locally as is will expose on 8000 a full shell with your user privileges. It is highly recommendend that you put a security authenticated proxy on front of it
