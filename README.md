@@ -2,19 +2,19 @@
 
 Shellme is a full web terminal server micro service.
 
-It supports full escape sequences. It is written in golang
+It supports escape sequences so you can run vim too :). It is written in golang
 
 ![Image of Shellme](https://raw.githubusercontent.com/ferama/shellme/master/docs/shellme.gif)
 
 ## How to run
 
-You can build a single binary cloning this repo and running the **build.sh** script.
+You can build a the binary distribution cloning this repo and running the **build.sh** script.
 You will need:
 
 * go 1.16
 * node 14
 
-For a quick tryout you can run an instance on an ubuntu based container running:
+For a quick tryout you can run an instance inside an ubuntu based container using:
 
 ```
 $ docker run -p 8000:8000 ferama/shellme
