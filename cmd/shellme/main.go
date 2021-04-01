@@ -45,8 +45,6 @@ func main() {
 	// Recovery middleware recovers from any panics and writes a 500 if there was one.
 	r.Use(gin.Recovery())
 
-	// log.Printf("=== IsProduction: %v===\n", isProduction)
-	// if isProduction != "1" {
 	r.Use(cors.New(cors.Config{
 		AllowOrigins:     []string{"*"},
 		AllowMethods:     []string{"*"},
@@ -55,11 +53,11 @@ func main() {
 		AllowCredentials: true,
 		MaxAge:           12 * time.Hour,
 	}))
-	// }
 
 	controller.SetupRoutes(r)
 
-	// static files
+	// static files custom middleware
+	// use the "build" dir (the webpack target) as static root
 	fsRoot, _ := fs.Sub(ui.StaticFiles, "build")
 	fileserver := http.FileServer(http.FS(fsRoot))
 	r.Use(func(c *gin.Context) {
