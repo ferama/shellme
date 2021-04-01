@@ -1,18 +1,23 @@
 package main
 
 import (
-	"os"
+	"io/fs"
+	"net/http"
 	"shellme/controller"
+	"shellme/ui"
 	"shellme/utils"
 	"shellme/wshub"
 	"time"
 
 	"github.com/gin-contrib/cors"
-	"github.com/gin-contrib/static"
 	"github.com/gin-gonic/gin"
 
 	log "github.com/sirupsen/logrus"
 )
+
+// // It will add all the files in ui/build, including hidden files.
+// //go:embed ../../ui/build/*
+// var staticFiles embed.FS
 
 func main() {
 	// log.SetReportCaller(true)
@@ -40,7 +45,6 @@ func main() {
 	// Recovery middleware recovers from any panics and writes a 500 if there was one.
 	r.Use(gin.Recovery())
 
-	isProduction := os.Getenv("PRODUCTION")
 	// log.Printf("=== IsProduction: %v===\n", isProduction)
 	// if isProduction != "1" {
 	r.Use(cors.New(cors.Config{
@@ -56,17 +60,12 @@ func main() {
 	controller.SetupRoutes(r)
 
 	// static files
-	if isProduction == "1" {
-		r.Use(static.Serve("/", static.LocalFile("ui/build", true)))
-	} else {
-		r.GET("/", func(c *gin.Context) {
-			c.Writer.WriteString("Dev Mode: run the ui using npm from the ui folder")
-		})
-	}
-
-	// r.NoRoute(func(c *gin.Context) {
-	// 	c.File("./ui/build")
-	// })
+	fsRoot, _ := fs.Sub(ui.StaticFiles, "build")
+	fileserver := http.FileServer(http.FS(fsRoot))
+	r.Use(func(c *gin.Context) {
+		fileserver.ServeHTTP(c.Writer, c.Request)
+		c.Abort()
+	})
 
 	log.Info("Starting up server at :8000")
 	r.Run(":8000")
