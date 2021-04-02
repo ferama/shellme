@@ -1,6 +1,6 @@
 #! /bin/bash
 
-# cd ui && npm install && npm run build && cd ..
+cd ui && npm install && npm run build && cd ..
 
 build() {
     EXT=""
