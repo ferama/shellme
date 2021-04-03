@@ -6,7 +6,6 @@ import (
 	"shellme/controller"
 	"shellme/ui"
 	"shellme/utils"
-	"shellme/wshub"
 	"time"
 
 	"github.com/gin-contrib/cors"
@@ -23,9 +22,6 @@ func main() {
 	log.SetLevel(log.DebugLevel)
 
 	flags := utils.GetFlags()
-
-	hub := wshub.GetHubInstance()
-	go hub.Run()
 
 	if !*flags.Debug {
 		gin.SetMode(gin.ReleaseMode)

@@ -4,10 +4,6 @@ body {
   color: #eee;
 }
 
-.CodeMirror {
-  font-size: 15px;
-  height: auto;
-}
 .cm-s-material-darker .cm-comment {
 	color: #887;
 }

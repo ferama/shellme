@@ -42,7 +42,7 @@ export class TerminalSingleton {
         })
         
         this.terminal.setOption('theme', {
-            background: "#222",
+            background: "#111",
             foreground: "#fff",
         })
         

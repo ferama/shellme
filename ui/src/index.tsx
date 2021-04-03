@@ -1,10 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import 'codemirror/mode/python/python'
-import "codemirror/lib/codemirror.css";
-import 'codemirror/theme/material-darker.css';
-
 // import 'antd/dist/antd.compact.css';
 import 'antd/dist/antd.dark.css';
 
