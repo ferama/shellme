@@ -1,4 +1,4 @@
-export default {
+export const Theme = {
     foreground: '#f8f8f2',
     background: '#1e1f29',
     cursor: '#bbbbbb',

@@ -3,7 +3,7 @@ import 'xterm/css/xterm.css'
 import { FitAddon } from 'xterm-addon-fit';
 import { AttachAddon } from 'xterm-addon-attach';
 import { getWsURL, sleep } from './Utils';
-import Theme from './themes/Dracula';
+import { Theme } from './themes/Dracula';
 
 export class TerminalSingleton {
     private socket: WebSocket | null
