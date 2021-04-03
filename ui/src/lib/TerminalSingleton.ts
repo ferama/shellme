@@ -3,6 +3,7 @@ import 'xterm/css/xterm.css'
 import { FitAddon } from 'xterm-addon-fit';
 import { AttachAddon } from 'xterm-addon-attach';
 import { getWsURL, sleep } from './Utils';
+import Theme from './themes/Dracula';
 
 export class TerminalSingleton {
     private socket: WebSocket | null
@@ -39,12 +40,13 @@ export class TerminalSingleton {
             convertEol: true,
             fontFamily: `'Fira Mono', monospace`,
             fontSize: 16,
+            theme: Theme
         })
         
-        this.terminal.setOption('theme', {
-            background: "#111",
-            foreground: "#fff",
-        })
+        // this.terminal.setOption('theme', {
+        //     background: "#222",
+        //     foreground: "#fff",
+        // })
         
         this.fitAddon = new FitAddon()
         this.terminal.loadAddon(this.fitAddon)
