@@ -94,12 +94,7 @@ func (h *Hub) Run() {
 		case message := <-h.Broadcast:
 			// log.Printf("sending %v %v: %v", len(h.clients[message.SessionName]), message.SessionName, message.Data)
 			for client := range h.clients[message.SessionName] {
-				select {
-				case client.send <- message:
-					// default:
-					// client.Close()
-					// delete(h.clients[message.SessionName], client)
-				}
+				client.send <- message
 			}
 		}
 	}
