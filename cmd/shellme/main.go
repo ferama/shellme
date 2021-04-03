@@ -15,32 +15,23 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-// // It will add all the files in ui/build, including hidden files.
-// //go:embed ../../ui/build/*
-// var staticFiles embed.FS
-
 func main() {
-	// log.SetReportCaller(true)
 	log.SetFormatter(&log.TextFormatter{
 		FullTimestamp: true,
 	})
 	// log.SetFormatter(&log.JSONFormatter{})
 	log.SetLevel(log.DebugLevel)
 
-	utils.GetFlags()
+	flags := utils.GetFlags()
 
 	hub := wshub.GetHubInstance()
 	go hub.Run()
 
-	// creates router with default middlewares
-	// r := gin.Default()
-
+	if !*flags.Debug {
+		gin.SetMode(gin.ReleaseMode)
+	}
 	// Creates a router without any middleware by default
 	r := gin.New()
-	// Global middleware
-	// Logger middleware will write the logs to gin.DefaultWriter even if you set with GIN_MODE=release.
-	// By default gin.DefaultWriter = os.Stdout
-	//r.Use(gin.Logger())
 
 	// Recovery middleware recovers from any panics and writes a 500 if there was one.
 	r.Use(gin.Recovery())

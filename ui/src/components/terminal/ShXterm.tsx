@@ -5,7 +5,7 @@ import { TerminalSingleton } from '../../lib/TerminalSingleton';
 
 const styles = {
     terminal: {
-        height: "85vh",
+        height: "97vh",
         padding: 3
     }
 }

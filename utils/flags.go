@@ -5,6 +5,7 @@ import "flag"
 // Flags ...
 type Flags struct {
 	PtyCmd *string
+	Debug  *bool
 }
 
 var flagValues *Flags
@@ -17,6 +18,7 @@ func GetFlags() *Flags {
 
 	flagValues = &Flags{
 		PtyCmd: flag.String("ptycmd", "sh", "The command to attach the pty to"),
+		Debug:  flag.Bool("debug", false, "Enable debug mode"),
 	}
 
 	flag.Parse()

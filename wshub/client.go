@@ -39,20 +39,9 @@ func (c *Client) Serve() {
 	go c.watchDisconnect()
 
 	for {
-		select {
-		// case <-c.quit:
-		// 	if err := c.conn.Close(); err != nil {
-		// 		logger.ErrorWithFields(clientLogContext, "ws client connection error", logger.Fields{
-		// 			"err": err,
-		// 		})
-		// 	}
-		// 	logger.Info(clientLogContext, "WS Client quit")
-
-		// 	return
-		case msg := <-c.send:
-			if err := c.conn.WriteJSON(msg); err != nil {
-				return
-			}
+		msg := <-c.send
+		if err := c.conn.WriteJSON(msg); err != nil {
+			return
 		}
 	}
 }
@@ -67,7 +56,6 @@ func (c *Client) watchDisconnect() {
 			// }
 			logger.Info(clientLogContext, "Client disconnected")
 			close(c.send)
-			// close(c.quit)
 			return
 		}
 	}

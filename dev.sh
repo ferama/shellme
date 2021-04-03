@@ -1,6 +1,6 @@
 #! /bin/bash
 
-flags=""
+flags="-debug=true"
 # flags="$flags -ptycmd \"sh -c 'cd /tmp; exec zsh'\""
 
 if [[ $(uname -s) == "Darwin" ]]
